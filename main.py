@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, Response
 from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__)
@@ -10,7 +10,11 @@ metrics.info('app_info', 'Application info', version='1.0.0')
 
 @app.route('/')
 def main():
-    return 'Hello world'
+    return 'Hello world'\
+
+@app.route('/healthz', methods=['GET'])
+def healthz():
+    return Response("{'status':'ok'}", status=200, mimetype='application/json')
 
 
 @app.route('/skip')

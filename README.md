@@ -20,3 +20,8 @@
 man - https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
 2) Прикручиваем Prometheus
 man - https://github.com/rycus86/prometheus_flask_exporter
+Тестим что все работает 
+- http://127.0.0.1:8080
+- http://127.0.0.1:8080/metrics
+3) Dockerfile - Соберем наш образ приклада в докере https://github.com/docker-library/python/blob/9fd031d91ced6ddc1bf1f0f34b893ad82fa0d010/3.11-rc/alpine3.16/Dockerfile
+4) 
