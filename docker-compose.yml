@@ -30,7 +30,7 @@ services:
       - 9090:9090
     volumes:
       - ${PWD}/config/prometheus.yml:/etc/prometheus/prometheus.yml
-      - prometheus_data:/prometheus
+#      - prometheus_data:/prometheus
   grafana:
     # https://hub.docker.com/r/grafana/grafana
     image: grafana/grafana
