@@ -53,9 +53,10 @@ curl -L https://github.com/kubernetes/kompose/releases/download/v1.26.0/kompose-
 
 5) Конвертируем наш docker-composer в k8s
 ```bash
-kompose convert -f docker-compose.yml -o k8s
+kompose convert -o k8s
 ```
 
 ```bash
 kubectl apply -f k8s/ --recursive
 ```
+#ToDo
