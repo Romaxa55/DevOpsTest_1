@@ -28,6 +28,6 @@ scrape_configs:
     static_configs:
       - targets: ["localhost:9090"]
 
-    - job_name: 'hello-world'
-      static_configs:
-        - targets: [ 'hello-world:8080' ]
+  - job_name: 'hello-world'
+    static_configs:
+      - targets: [ 'hello-world:8080' ]
