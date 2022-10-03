@@ -40,3 +40,22 @@ man - https://github.com/rycus86/prometheus_flask_exporter
 ## Доп задача
 Ставим миникуб
 https://kubernetes.io/ru/docs/tasks/tools/install-minikube/
+
+helm - 
+https://github.com/helm/helm/releases
+
+Kompose - 
+https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/
+
+```bash
+curl -L https://github.com/kubernetes/kompose/releases/download/v1.26.0/kompose-darwin-amd64 -o kompose
+```
+
+5) Конвертируем наш docker-composer в k8s
+```bash
+kompose convert -f docker-compose.yml -o k8s
+```
+
+```bash
+kubectl apply -f k8s/ --recursive
+```
