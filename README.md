@@ -13,3 +13,10 @@
 Е2Е-тесты, которые проверяют корректность докеризации приложения.  
 Результат Тестовое задание должно быть предоставлено в виде ссылки на публичный репозиторий (Github, Bitbucket, Gitlab) с исходным кодом. 
 Приветствуется README.md файл с обзором реализации и/или шагами по запуску. 
+
+
+Реализация 
+1) "Hello world" (Python) -> Поднимаем Web Server на Flask на порту 8080/tcp.
+man - https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
+2) Прикручиваем Prometheus
+man - https://github.com/rycus86/prometheus_flask_exporter
