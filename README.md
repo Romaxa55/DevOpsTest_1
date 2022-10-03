@@ -14,8 +14,8 @@
 Результат Тестовое задание должно быть предоставлено в виде ссылки на публичный репозиторий (Github, Bitbucket, Gitlab) с исходным кодом. 
 Приветствуется README.md файл с обзором реализации и/или шагами по запуску. 
 
+## Основная задача
 
-Реализация 
 1) "Hello world" (Python) -> Поднимаем Web Server на Flask на порту 8080/tcp.
 man - https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
 2) Прикручиваем Prometheus.
@@ -36,3 +36,7 @@ man - https://github.com/rycus86/prometheus_flask_exporter
 
 - Прометеус http://localhost:9090/
 ![Alt text](img/img4.png?raw=true "Prometheus")
+
+## Доп задача
+Ставим миникуб
+https://kubernetes.io/ru/docs/tasks/tools/install-minikube/
