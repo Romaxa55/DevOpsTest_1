@@ -28,7 +28,7 @@ man - https://github.com/rycus86/prometheus_flask_exporter
 Тестим docker compose up или docker compose up -d
 ![Alt text](img/img1.png?raw=true "docker-composer")
 Проверяем наши сервисы
-- Графана http://localhost:3000/login 
+- Графана http://localhost:3000/login admin:admin
 ![Alt text](img/img2.png?raw=true "Grafana")
 
 - Hello world http://localhost:8080/metrics
