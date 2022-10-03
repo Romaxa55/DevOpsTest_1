@@ -1,0 +1,48 @@
+version: '3.1'
+# https://grafana.com/docs/grafana-cloud/quickstart/docker-compose-linux/
+
+services:
+  hello-world:
+    build: .
+    container_name: hello-world
+    networks:
+      - lan
+    ports:
+      - '8080:8080'
+  wait:
+    # https://hub.docker.com/r/waisbrot/wait
+    # ready-check, чекаем запуск приклада
+    image: waisbrot/wait
+    networks:
+      - lan
+    environment:
+    # Нащ контейнер
+    - TARGETS=hello-world:8080
+    - TIMEOUT=2
+  prometheus:
+    # https://hub.docker.com/r/prom/prometheus
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    networks:
+      - lan
+    ports:
+      - 9090:9090
+    volumes:
+      - ${PWD}/config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+  grafana:
+    # https://hub.docker.com/r/grafana/grafana
+    image: grafana/grafana
+    networks:
+      - lan
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
+    volumes:
+      - ${PWD}/config/grafana/provisioning/:/etc/grafana/provisioning/
+
+networks:
+    lan:
+      driver: bridge
