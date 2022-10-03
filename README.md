@@ -26,3 +26,13 @@ man - https://github.com/rycus86/prometheus_flask_exporter
 3) Dockerfile - Соберем наш образ приклада в докере https://github.com/docker-library/python/blob/9fd031d91ced6ddc1bf1f0f34b893ad82fa0d010/3.11-rc/alpine3.16/Dockerfile
 4) Пишем docker-composer, прикручиваем графану, prometheus, wait.
 Тестим docker compose up или docker compose up -d
+![Alt text](img/img1.png?raw=true "docker-composer")
+Проверяем наши сервисы
+- Графана http://localhost:3000/login 
+![Alt text](img/img2.png?raw=true "Grafana")
+
+- Hello world http://localhost:8080/metrics
+![Alt text](img/img3.png?raw=true "Hello World")
+
+- Прометеус http://localhost:9090/
+![Alt text](img/img4.png?raw=true "Prometheus")
