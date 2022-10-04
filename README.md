@@ -61,3 +61,26 @@ kompose convert -c -f docker-compose-k8s.yml -o charts
 ```bash
 helm template charts charts
 ```
+
+Деплоим и поднгимаем gui кубера и сервисов
+```bash
+helm install charts charts
+minikube dashboard --url
+minikube service --all
+```
+```bash
+NAME                           READY   STATUS    RESTARTS      AGE
+grafana-5bb7bc8fbc-ft7s2       1/1     Running   2 (27m ago)   55m
+hello-world-69d4556c6f-8ztm7   1/1     Running   0             9m20s
+prometheus-86b79b9ccf-v9msb    1/1     Running   3 (27m ago)   55m
+```
+Profit
+График есть
+![Alt text](img/img5.png?raw=true "Prometheus")
+Поды запущены
+![Alt text](img/img6.png?raw=true "Prometheus")
+
+
+P.S. Можно также настроить Liveness, Readiness и Startup проб
+Просто дописать манифест по инструкции...
+https://kubernetes.io/ru/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
