@@ -2,36 +2,33 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert -o k8s
+    kompose.cmd: kompose convert -c -f docker-compose-k8s.yml -o charts
     kompose.version: 1.26.0 (40646f47)
   creationTimestamp: null
   labels:
-    io.kompose.service: wait
-  name: wait
+    io.kompose.service: hello-world
+  name: hello-world
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: wait
-  strategy: {}
+      io.kompose.service: hello-world
+    type: Recreate
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose convert -o k8s
+        kompose.cmd: kompose convert -c -f docker-compose-k8s.yml -o charts
         kompose.version: 1.26.0 (40646f47)
       creationTimestamp: null
       labels:
         io.kompose.network/lan: "true"
-        io.kompose.service: wait
+        io.kompose.service: hello-world
     spec:
       containers:
-        - env:
-            - name: TARGETS
-              value: hello-world:8080
-            - name: TIMEOUT
-              value: "2"
-          image: waisbrot/wait
-          name: wait
+        - image: romaxa55/hello-world
+          name: hello-world
+          ports:
+            - containerPort: 8080
           resources: {}
       restartPolicy: Always
 status: {}

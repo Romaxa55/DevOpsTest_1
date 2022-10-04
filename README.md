@@ -40,23 +40,24 @@ man - https://github.com/rycus86/prometheus_flask_exporter
 ## Доп задача
 Ставим миникуб
 https://kubernetes.io/ru/docs/tasks/tools/install-minikube/
+и ставим реджестри
+https://gist.github.com/trisberg/37c97b6cc53def9a3e38be6143786589
 
 helm - 
 https://github.com/helm/helm/releases
 
-Kompose - 
-https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/
+Упростим задачу и сконвертируем наш docker-composer в helm chart
+https://github.com/metal3d/katenary
+
+По инструкции подготовим наш Docker-compose убрав из него volumes
+https://www.digitalocean.com/community/tutorials/how-to-migrate-a-docker-compose-workflow-to-kubernetes
+
 
 ```bash
-curl -L https://github.com/kubernetes/kompose/releases/download/v1.26.0/kompose-darwin-amd64 -o kompose
+kompose convert -c -f docker-compose-k8s.yml -o charts 
 ```
 
-5) Конвертируем наш docker-composer в k8s
+Прогоняем тест
 ```bash
-kompose convert -o k8s
+helm template charts charts
 ```
-
-```bash
-kubectl apply -f k8s/ --recursive
-```
-#ToDo

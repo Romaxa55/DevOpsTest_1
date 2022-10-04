@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-datasource-cm
+data:
+  datasource.yml: |-
+{{ .Files.Get "grafana/provisioning/datasources/datasource.yml" | indent 4}}

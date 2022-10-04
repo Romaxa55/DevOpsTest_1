@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert -o k8s
+    kompose.cmd: kompose convert -c -f docker-compose-k8s.yml -o charts
     kompose.version: 1.26.0 (40646f47)
   creationTimestamp: null
   labels:
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose convert -o k8s
+        kompose.cmd: kompose convert -c -f docker-compose-k8s.yml -o charts
         kompose.version: 1.26.0 (40646f47)
       creationTimestamp: null
       labels:
@@ -32,11 +32,18 @@ spec:
             - containerPort: 3000
           resources: {}
           volumeMounts:
-            - mountPath: ${PWD}/../config/grafana/provisioning/:/etc/grafana/provisioning/
-              name: grafana-claim0
+            - name: grafana-dashboard-volume
+              mountPath: /etc/grafana/provisioning/dashboards
+            - name: grafana-datasource-volume
+              mountPath: /etc/grafana/provisioning/datasources
       restartPolicy: Always
       volumes:
-        - name: grafana-claim0
-          persistentVolumeClaim:
-            claimName: grafana-claim0
+        - name: grafana-dashboard-volume
+          configMap:
+            defaultMode: 420
+            name: grafana-dashboard-cm
+        - name: grafana-datasource-volume
+          configMap:
+            defaultMode: 420
+            name: grafana-datasource-cm
 status: {}

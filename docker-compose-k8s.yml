@@ -3,23 +3,13 @@ version: '3.1'
 
 services:
   hello-world:
-    build: .
+    image: hello-world
     container_name: hello-world
     restart: always
     networks:
       - lan
     ports:
       - '8080:8080'
-  wait:
-    # https://hub.docker.com/r/waisbrot/wait
-    # ready-check, чекаем запуск приклада
-    image: waisbrot/wait
-    networks:
-      - lan
-    environment:
-    # Нащ контейнер
-    - TARGETS=hello-world:8080
-    - TIMEOUT=2
   prometheus:
     # https://hub.docker.com/r/prom/prometheus
     image: prom/prometheus:latest
